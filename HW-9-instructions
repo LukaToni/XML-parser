@@ -1,0 +1,131 @@
+A friendly university decided to create a system to support teaching, being inspired by our online classroom. One
+than planned opportunities planned system is also estimated to import data in the form of an XML document. In this option, they
+in the implementation of the system stuck and need our help. We shall help them to write a program to import assessments in
+homework for an object.
+Information about the assessments that need to be imported, are written in the form of an XML document. XML document can contain multiple assessments in
+the individual assessment of coursework is determined by three elements with labels <studentId>, <nalogaId> and <value> and
+together constitute the content of the element with the tag <ocena>:
+<ocena>
+<vpisnaStevilka> 12345678 </ vpisnaStevilka>
+<nalogaId> 1 </ nalogaId>
+<value> 5 </ value>
+</ Rating>
+When this element bearing <vpisnaStevilka> contains eight digit student matriculation number, the item marked <nalogaId>
+contains the serial number of tasks and item labeled <value> contains an integer value estimate.
+Each XML file can contain only one top element, and all elements are labeled <ocena> consecutively included in the top
+element bearing <ocene>:
+<ocene>
+<ocena>
+<vpisnaStevilka> 12345678 </ vpisnaStevilka>
+<nalogaId> 1 </ nalogaId>
+<value> 5 </ value>
+</ Rating>
+<ocena>
+<vpisnaStevilka> 12345677 </ vpisnaStevilka>
+<nalogaId> 2 </ nalogaId>
+<value> 3 </ value>
+</ Rating>
+.
+.
+.
+<ocena>
+<vpisnaStevilka> 12345678 </ vpisnaStevilka>
+<nalogaId> 2 </ nalogaId>
+<value> 3 </ value>
+</ Rating>
+</ Reviews>
+In the three dots represent any additional items tagged with <ocena>.
+Task
+In the C programming language to write a program based on the ratings given, written in the form described above XML document, for
+each of the students who have been assessed, shows the estimated number of domestic tasks and the total number of points scored. In the case that
+information is not recorded as a valid XML document, the program displays an error message.
+XML document
+An XML document consists of elements. Element determine the initial and final code, (such as brackets) enclose its contents
+(Example: <nalogaId> 1 </ nalogaId>). The contents of the text with which you can write some information or the other
+(Duly completed) elements. In the second case this means that the elements can be embedded (for example is given in the description of the document
+XML estimates). Elements can also be empty and no content (eg <ocene> </ reviews>). Empty element can be
+written as an alternative (for example: <ocene /> but this record elements in our task will not be used. An item can
+the attributes by specifying (for example: <ocena vrsta="številčna"> 5 </ rating>). Even this record elements
+our task will not be used. XML document can contain only one top (root) element. Also, all the XML documents to
+this point we are not told. Learn more about XML-course can be found in abundance on the internet.
+The input data
+The input data estimates are recorded in the form of an XML document in a file whose name is given as an argument when starting the program.
+If the program is run with no arguments, then the input data on the estimates given in the form of an XML document using the standard
+entrance.
+When writing a program, consider the following assumptions on the input data:
+• The input XML document contains the upper bearing element <ocene> containing 0 or more items falling <ocena>.
+The order of items marked <ocena> is free.
+• Any item marked <ocena> contains items with tags <vpisnaStevilka>, and <nalogaId>
+<value>. The order of these three elements within the element labeled <ocena> is free.
+• The number of students is estimated upper limit.
+• Number of homework is not limited upward.
+• If the XML document contains a number of assessments that belong to the same student in the same homework, then prevail score, which is
+XML document given later.
+• the registration number may begin with the symbol '0 '(zero).
+• Elements can also contain other elements also signs of a space, tab, or switch to a new line. These signs
+You can ignore. Items with tags <vpisnaStevilka>, <nalogaId> and <value> will not contain
+other elements.
+• Symbols elements will be written without spaces (in the document, for example, will not occur <ocena code> or
+</ Rating>).
+Output data
+The program should, for each of the estimated student to standard output on a separate line displays its registration number, number of estimated
+homework and so the total number of points scored (sum of all estimates). Printouts of data in the same row should be separated by one
+space. A sample lines should be arranged in increasing student enrollment numbers. The last line of output should be just like the others,
+ends with the transition to the new line '\ n'.
+If you are reading or processing an XML document errors occur to the program displays the string "error", followed by the error number. Series
+Let separated by a space. Line to be completed by the sign of the transition to the new line '\ n'. Possible errors are:
+1 error: file name, which was given as an argument when starting the program does not exist.
+error 2: an item labeled <vpisnaStevilka>, <nalogaId> or <value> is empty.
+error 3: start tag and end tag of an element are the same.
+Example 2 errors:
+<ocene>
+<ocena>
+<vpisnaStevilka> </ vpisnaStevilka>
+<nalogaId> 1 </ nalogaId>
+<value> 5 </ value>
+</ Rating>
+</ Reviews>
+Example 3 errors:
+<ocene>
+<ocena>
+<vpisnaStevilka> 12345678 <nalogaId>
+</ VpisnaStevilka> 1 </ nalogaId>
+<value> 5 </ value>
+</ Rating>
+</ Reviews>
+Tip: mismatched opening and closing tags (nested) elements can generally easy to detect using the fund (in
+our case, when the structure of an XML document is well-known and uncomplicated, you can do it the easy way without using
+Fund).
+Test cases will not contain errors that do not fall into one of three groups described errors.
+Example 1
+The input XML document:
+<ocene>
+<ocena>
+<vpisnaStevilka> 12345678 </ vpisnaStevilka> <nalogaId> 4 </ nalogaId> <value> 5 </ value>
+</ Rating>
+<ocena>
+<nalogaId> 2 </ nalogaId> <value> 3 </ value>
+<vpisnaStevilka> 87654321 </ vpisnaStevilka>
+</ Rating>
+<ocena>
+<value> 5 </ value>
+<nalogaId> 2 </ nalogaId>
+<vpisnaStevilka> 87654321 </ vpisnaStevilka>
+</ Rating>
+<ocena>
+<vpisnaStevilka> 12345678 </ vpisnaStevilka> <nalogaId> 2 </ nalogaId>
+<value> 3 </ value>
+</ Rating>
+</ Reviews>
+Display to standard output:
+12345678 2 8
+87654321 1 5
+Example 2
+The input XML document:
+<ocene>
+<ocena>
+<vpisnaStevilka> </ vpisnaStevilka> <nalogaId> 4 </ nalogaId> <value> </ value>
+</ Rating>
+</ Reviews>
+Display to standard output:
+error 2
